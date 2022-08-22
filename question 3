@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Function to sort the array such that
+// negative values do not get affected
+void sortArray(int a[], int n)
+{
+ 
+    // Store all non-negative values
+    vector<int> ans;
+    for (int i = 0; i < n; i++) {
+        if (a[i] >= 0)
+            ans.push_back(a[i]);
+    }
+ 
+    // Sort non-negative values
+    sort(ans.begin(), ans.end());
+ 
+    int j = 0;
+    for (int i = 0; i < n; i++) {
+ 
+        // If current element is non-negative then
+        // update it such that all the
+        // non-negative values are sorted
+        if (a[i] >= 0) {
+            a[i] = ans[j];
+            j++;
+        }
+    }
+ 
+    // Print the sorted array
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+}
+ 
+// Driver code
+int main()
+{
+    int arr[] = { 2, -6, -3, 8, 4, 1 };
+ 
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    sortArray(arr, n);
+ 
+    return 0;
+}
